@@ -1928,6 +1928,9 @@ class TranslationUnit(ClangObject):
         if index is None:
             index = Index.create()
 
+        if isinstance(filename, str):
+            filename = filename.encode('utf8')
+
         args_array = None
         if len(args) > 0:
             args_array = (c_char_p * len(args))(* args)
